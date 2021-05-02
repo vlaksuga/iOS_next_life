@@ -10,8 +10,10 @@ import SwiftUI
 struct InsertView: View {
     
     @Binding var birth: Date
+    @State var nation: Nation
     
     var body: some View {
+
         NavigationView{
             VStack{
                 DatePicker(
@@ -20,11 +22,11 @@ struct InsertView: View {
                     displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding()
-                
+
                 Spacer()
-                
+
                 NavigationLink(
-                    destination: ResultView(birth: $birth),
+                    destination: ResultView(nation: nations[Int((birth.timeIntervalSince1970) / 86400) % 254]),
                     label: {
                         Text("Show Result")
                     }).padding(.bottom, 20.0)
@@ -38,6 +40,6 @@ struct InsertView: View {
 struct InsertView_Previews: PreviewProvider {
     @State static private var birth = Date()
     static var previews: some View {
-        InsertView(birth: self.$birth)
+        InsertView(birth: $birth, nation: nations[0])
     }
 }

@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         if !showIntro { IntroView(showIntro: $showIntro) }
-        else { InsertView(birth: $birth) }
+        else { InsertView(birth: $birth, nation: nations[0]) }
     }
     
 }

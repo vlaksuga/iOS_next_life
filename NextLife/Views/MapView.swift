@@ -8,31 +8,33 @@
 import SwiftUI
 import MapKit
 
-struct MyAnnotationItem: Identifiable {
-    let id = UUID()
-    var coordinate: CLLocationCoordinate2D
-}
 
 struct MapView: View {
     
-    @State private var regieon = MKCoordinateRegion(
+    var coordinate: CLLocationCoordinate2D
+    
+    @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868),
-        span: MKCoordinateSpan(latitudeDelta: 40.0, longitudeDelta: 40.0)
+        span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
     )
     
-    var annotationItems: [MyAnnotationItem] = [
-        MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868))
-    ]
     
     var body: some View {
-        Map(coordinateRegion: $regieon, annotationItems: annotationItems) { item in
-            MapPin(coordinate: item.coordinate)
-        }
+        Map(coordinateRegion: $region)
+            .onAppear{
+                setRegion(coordinate)
+            }
+    }
+    
+    private func setRegion(_ coordinate: CLLocationCoordinate2D) {
+        region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0))
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(coordinate: CLLocationCoordinate2D(latitude: 34.011_286, longitude: -116.166_868))
     }
 }

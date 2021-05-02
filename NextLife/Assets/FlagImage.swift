@@ -9,10 +9,10 @@ import SwiftUI
 
 struct FlagImage: View {
     
-    @Binding var image: String
+    var image: Image
     
     var body: some View {
-        Image(image)
+        image
             .resizable()
             .scaledToFill()
             .frame(width: 80, height: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -24,9 +24,7 @@ struct FlagImage: View {
 
 struct FlagImage_Previews: PreviewProvider {
     
-    @State static var image = "jp"
-    
     static var previews: some View {
-        FlagImage(image: $image)
+        FlagImage(image: Image("jp"))
     }
 }
