@@ -21,12 +21,10 @@ struct MapView: View {
     
     var body: some View {
         Map(coordinateRegion: $region)
-            .onAppear{
-                setRegion(coordinate)
-            }
+            .onAppear { setRegion(region: coordinate) }
     }
     
-    private func setRegion(_ coordinate: CLLocationCoordinate2D) {
+    private func setRegion(region coordinate: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(
             center: coordinate,
             span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0))

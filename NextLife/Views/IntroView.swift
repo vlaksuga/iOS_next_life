@@ -20,7 +20,7 @@ struct IntroView: View {
                     Text("My Next Life")
                         .font(.title2)
                         .foregroundColor(.white)
-                
+                    
                     
                     Button("Start"){
                         showIntro = true
