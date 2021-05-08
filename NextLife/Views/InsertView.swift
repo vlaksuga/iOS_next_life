@@ -26,7 +26,7 @@ struct InsertView: View {
                 Spacer()
 
                 NavigationLink(
-                    destination: ResultView(nation: nations[Int((birth.timeIntervalSince1970) / 86400) % 254]),
+                    destination: ResultView(nation: nations[Int(abs(birth.timeIntervalSince1970) / 86400) % 254]),
                     label: {
                         Text("Show Result")
                     }).padding(.bottom, 20.0)

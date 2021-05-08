@@ -15,7 +15,7 @@ struct ResultView: View {
     var body: some View {
         
         VStack(alignment: .leading){
-            MapView(coordinate: nation.locationCoordianate)
+            MapView(nation: nation)
                 .ignoresSafeArea()
                 .frame(height: 200)
             HStack(alignment: .top){
